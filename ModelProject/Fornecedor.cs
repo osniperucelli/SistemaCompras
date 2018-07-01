@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelProject
 {
-    class Fornecedor
+    public class Fornecedor
     {
         public Guid Id { get; set; }   //guid representa n inteiro de 16 bytes
         public string Nome { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelProject
 {
-    class ProdutoNotaEntrada
+    public class ProdutoNotaEntrada
     {
         public Guid Id { get; set; }
         public Produto ProdutoNota { get; set; }
