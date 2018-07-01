@@ -22,13 +22,49 @@ namespace ViewProject
             this.controller = controller;
         }
 
+        //botao gravar
         private void btnGravar_Click(object sender, EventArgs e) {
-            this.controller.Insert(new Fornecedor() {
-                Id = Guid.NewGuid(),
+            //var fornecedor = this.controller.Insert(
+            var fornecedor = new Fornecedor() {
+                Id = (txtID.Text == string.Empty ?    //operador ternario  o ?:
+                    Guid.NewGuid() : new Guid(txtID.Text)),
                 Nome = txtNome.Text,
                 CNPJ = txtCNPJ.Text
-            }
-            );
+            };
+            fornecedor = (txtID.Text == string.Empty ?
+                this.controller.Insert(fornecedor) : 
+                this.controller.Update(fornecedor));                
+                //txtID.Text = fornecedor.Id.ToString();
+            dgvFornecedores.DataSource = null;   //funciona com reset de dados no controle.
+            dgvFornecedores.DataSource = this.controller.GetAll();  //getall é um ilist tornando controlador e repositorio mais independentes.
+            ClearControls();
+        }
+
+        //Metodo clearControl
+        private void ClearControls() {
+            dgvFornecedores.ClearSelection();
+            txtID.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtCNPJ.Text = string.Empty;
+            txtNome.Focus();  //atribui foto ao primeiro controle editavel do formulario
+        }
+        
+
+        //botao novo
+        private void btnNovo_Click(object sender, EventArgs e){
+            ClearControls();
+            //txtID.Text = string.Empty;
+            //txtNome.Text = string.Empty;
+            //txtCNPJ.Text = string.Empty;
+        }
+
+
+        //metodo captura evento selecionado
+        private void dgvFornecedores_SelectionChanged(object sender, EventArgs e)
+        {
+            txtID.Text = dgvFornecedores.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = dgvFornecedores.CurrentRow.Cells[1].Value.ToString();
+            txtCNPJ.Text = dgvFornecedores.CurrentRow.Cells[2].Value.ToString();
         }
 
 
