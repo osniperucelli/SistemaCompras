@@ -327,7 +327,7 @@
             // 
             this.lblCUsto.AutoSize = true;
             this.lblCUsto.Location = new System.Drawing.Point(3, 53);
-            this.lblCUsto.Name = "lblCUsto";
+            this.lblCUsto.Name = "lblCusto";
             this.lblCUsto.Size = new System.Drawing.Size(37, 13);
             this.lblCUsto.TabIndex = 2;
             this.lblCUsto.Text = "Custo:";

@@ -70,10 +70,9 @@ namespace ViewProject
                 FornecedorNota = (Fornecedor)cbxFornecedor.SelectedItem,
                 Numero = txtNumero.Text
             };
-                notaEntrada = (txtIDNota.Text ==
-                string.Empty ? this.controller.Insert(
-                notaEntrada) : this.controller.Update(
-                notaEntrada));               
+                notaEntrada = (txtIDNota.Text == string.Empty ? 
+                this.controller.Insert(notaEntrada) : 
+                this.controller.Update(notaEntrada));               
             dgvNotasEntrada.DataSource = null;
             dgvNotasEntrada.DataSource = this.controller.GetAll();
             ClearControlsNota();
@@ -134,7 +133,7 @@ namespace ViewProject
             try
             {
                 this.notaAtual = this.controller.
-                    GetNotaEntradaById((Guid)dgvNotasEntrada.
+                    GetNotaEntradabyId((Guid)dgvNotasEntrada.
                     CurrentRow.Cells[0].Value);
                 txtIDNota.Text = notaAtual.Id.
                     ToString();
