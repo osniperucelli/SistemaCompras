@@ -11,6 +11,7 @@ using ControllerProject;
 
 namespace ViewProject
 {
+    //declaracao de controladores no form da janela principal
     public partial class FormJanelaPrincipal : Form
     {
         private FornecedorController fornecedorController = new FornecedorController();
@@ -22,9 +23,16 @@ namespace ViewProject
             InitializeComponent();
         }
 
+        //captura evento click menu fornecedores
         private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FormFornecedor(fornecedorController).ShowDialog();
+        }
+
+        //adicionado 
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormProduto(produtoController).ShowDialog();
         }
 
         private void compraToolStripMenuItem_Click(object sender, EventArgs e)

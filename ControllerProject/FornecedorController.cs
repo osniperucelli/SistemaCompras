@@ -12,6 +12,7 @@ namespace ControllerProject
     {
         private Repository repository = new Repository();
         
+
         public Fornecedor Insert(Fornecedor fornecedor)
         {
             return this.repository.InsertFornecedor(fornecedor);

@@ -59,7 +59,7 @@ namespace ViewProject
         }
 
 
-        //botao gravar nota
+        //botao gravar ou gravar nota dif da pag 173
         private void btnGravarNota_Click(object sender, System.EventArgs e)
         {
             var notaEntrada = new NotaEntrada()
@@ -70,11 +70,12 @@ namespace ViewProject
                 FornecedorNota = (Fornecedor)cbxFornecedor.SelectedItem,
                 Numero = txtNumero.Text
             };
-            notaEntrada = (txtIDNota.Text == string.Empty ? 
-                this.controller.Insert(notaEntrada));
-                this.controller.Update(notaEntrada));
+                notaEntrada = (txtIDNota.Text ==
+                string.Empty ? this.controller.Insert(
+                notaEntrada) : this.controller.Update(
+                notaEntrada));               
             dgvNotasEntrada.DataSource = null;
-            dgvNotasEntrada.DataSource = this.controller.GetAllNotasEntrada();
+            dgvNotasEntrada.DataSource = this.controller.GetAll();
             ClearControlsNota();
         }
 
@@ -144,7 +145,7 @@ namespace ViewProject
                 dtpEntrada.Value = notaAtual.DataEntrada;
                 UpdateProdutosGrid();
             }
-            catch
+            catch (Exception exception)
             {
                 this.notaAtual = new NotaEntrada();
             }

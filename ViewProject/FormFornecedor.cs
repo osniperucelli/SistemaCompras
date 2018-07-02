@@ -12,15 +12,29 @@ using ControllerProject;
 
 namespace ViewProject
 {
+    //VERSAO 2
     public partial class FormFornecedor : Form
     {
-        private FornecedorController controller = new FornecedorController();
+        private FornecedorController controller;
 
         public FormFornecedor(FornecedorController controller)
         {
             InitializeComponent();
             this.controller = controller;
         }
+    }
+
+    //VERSAO 1 
+    //public partial class FormFornecedor : Form
+    //{
+        //declaracao do controlador na camada de apresentacao 
+        //private FornecedorController controller = new FornecedorController();
+        //
+        //public FormFornecedor(FornecedorController controller)
+        //{
+        //    InitializeComponent();
+        //    this.controller = controller;
+        //}
 
         //botao gravar
         private void btnGravar_Click(object sender, EventArgs e)
@@ -38,7 +52,7 @@ namespace ViewProject
                 this.controller.Update(fornecedor));                
                 //txtID.Text = fornecedor.Id.ToString();
             dgvFornecedores.DataSource = null;   //funciona com reset de dados no controle.
-            dgvFornecedores.DataSource = this.controller.GetAll();  //getall é um ilist tornando controlador e repositorio mais independentes.
+            dgvFornecedores.DataSource = this.controller.GetAll();  //getAll é um ilist tornando controlador e repositorio mais independentes.
             ClearControls();
         }
 

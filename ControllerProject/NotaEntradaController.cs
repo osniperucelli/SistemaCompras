@@ -12,6 +12,9 @@ namespace ControllerProject
     {
         private Repository repository = new Repository();
 
+
+
+
         public NotaEntrada Insert(NotaEntrada notaEntrada) {
             return this.repository.InsertNotaEntrada(notaEntrada);
         }
@@ -23,15 +26,15 @@ namespace ControllerProject
         }
 
 
-        //inclusao de ultima hora pag 179
+        //inclusao de ultima hora pag 178
         public void RemoveNotaEntrada(NotaEntrada notaEntrada)
         {
-            this.NotasEntrada.Remove(notaEntrada);
+            this.notasEntrada.Remove(notaEntrada);
         }
 
 
 
-        public IList<NotaEntrada> GetAllNotasEntrada() {
+        public IList<NotaEntrada> GetAll() {
             return this.repository.GetAllNotasEntrada();
         }
 

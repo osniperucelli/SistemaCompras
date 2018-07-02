@@ -62,7 +62,15 @@ namespace PersistenceProject
             return notaEntrada;
         }
 
-        
+
+        public NotaEntrada GetNotaEntradaById(Guid Id)
+        {
+            var notaEntrada = this.notasEntrada[this.notasEntrada.IndexOf(new NotaEntrada() { Id = Id })];
+            return notaEntrada;
+        }
+
+
+
         //para Produto
 
         public Produto InsetProduto(Produto produto)
@@ -88,13 +96,6 @@ namespace PersistenceProject
             return produto;
         }
 
-
-
-        public NotaEntrada GetNotaEntradaById(Guid Id)
-        {
-            var notaEntrada = this.notasEntrada[this.notasEntrada.IndexOf(new NotaEntrada() { Id = Id })];
-            return notaEntrada;
-        }
-
+        
     }
 }
