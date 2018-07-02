@@ -27,10 +27,10 @@ namespace ControllerProject
 
 
         //inclusao de ultima hora pag 178
-        public void RemoveNotaEntrada(NotaEntrada notaEntrada)
-        {
-            this.notasEntrada.Remove(notaEntrada);
-        }
+        //public void RemoveNotaEntrada(NotaEntrada notaEntrada)
+        //{
+        //    this.notasEntrada.Remove(notaEntrada);
+        //}
 
 
 

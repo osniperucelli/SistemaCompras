@@ -13,28 +13,28 @@ using ControllerProject;
 namespace ViewProject
 {
     //VERSAO 2
+    //public partial class FormFornecedor : Form
+    //{
+    //    private FornecedorController controller;
+    //
+    //    public FormFornecedor(FornecedorController controller)
+    //   {
+    //        InitializeComponent();
+    //        this.controller = controller;
+    //    }
+    //}
+
+    //VERSAO 1 
     public partial class FormFornecedor : Form
     {
-        private FornecedorController controller;
-
+        //declaracao do controlador na camada de apresentacao 
+        private FornecedorController controller = new FornecedorController();
+        
         public FormFornecedor(FornecedorController controller)
         {
             InitializeComponent();
             this.controller = controller;
         }
-    }
-
-    //VERSAO 1 
-    //public partial class FormFornecedor : Form
-    //{
-        //declaracao do controlador na camada de apresentacao 
-        //private FornecedorController controller = new FornecedorController();
-        //
-        //public FormFornecedor(FornecedorController controller)
-        //{
-        //    InitializeComponent();
-        //    this.controller = controller;
-        //}
 
         //botao gravar
         private void btnGravar_Click(object sender, EventArgs e)

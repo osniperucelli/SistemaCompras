@@ -136,7 +136,7 @@ namespace ViewProject
                 this.notaAtual = this.controller.
                     GetNotaEntradaById((Guid)dgvNotasEntrada.
                     CurrentRow.Cells[0].Value);
-                txtIDNotaEntrada.Text = notaAtual.Id.
+                txtIDNota.Text = notaAtual.Id.
                     ToString();
                 txtNumero.Text = notaAtual.Numero;
                 cbxFornecedor.SelectedItem = notaAtual.
@@ -145,7 +145,7 @@ namespace ViewProject
                 dtpEntrada.Value = notaAtual.DataEntrada;
                 UpdateProdutosGrid();
             }
-            catch (Exception exception)
+            catch //(Exception exception)
             {
                 this.notaAtual = new NotaEntrada();
             }
@@ -164,7 +164,12 @@ namespace ViewProject
         }
 
 
-        //botao Novo Produto
+
+
+
+
+
+        //botao Novo Produto 182
         private void btnNovoProduto_Click(object sender, EventArgs e)
         {
             ClearControlsProduto();
@@ -216,6 +221,14 @@ namespace ViewProject
             ClearControlsProduto();
         }
 
+        //incluido do livro 183
+        //private void RegistrarProduto(ProdutoNotaEntrada produto)
+        //{
+        //    if (this.Produtos.Contains(produto))
+        //        this.Produtos.Remove(produto);
+        //    this.Produtos.Add(produto);
+        //}
+
 
         //botao cancelar produto
         private void btnCancelarProduto_Click(object sender, EventArgs e)
@@ -225,6 +238,22 @@ namespace ViewProject
         }
 
 
+        //botao remover produto
+        private void btnRemoverProduto_Click(object sender, EventArgs e)
+        {
+            this.notaAtual.RemoverProduto(
+                new ProdutoNotaEntrada()
+                {
+                    Id = new Guid(txtIDProduto.Text)
+                }
+            );
+            this.controller.Update(this.notaAtual);
+            UpdateProdutosGrid();
+            ClearControlsProduto();
+            ChangeStatusOfControls(false);
+        }
+
+        
         //metodo Clear Controls Produt
         private void ClearControlsProduto()
         {

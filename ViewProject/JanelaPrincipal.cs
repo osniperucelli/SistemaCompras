@@ -29,11 +29,11 @@ namespace ViewProject
             new FormFornecedor(fornecedorController).ShowDialog();
         }
 
-        //adicionado 
-        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new FormProduto(produtoController).ShowDialog();
-        }
+        //adicionado  do livro 
+        //private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    new FormProduto(produtoController).ShowDialog();
+        //}
 
         private void compraToolStripMenuItem_Click(object sender, EventArgs e)
         {
