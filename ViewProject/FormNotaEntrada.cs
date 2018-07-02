@@ -7,11 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ModelProject;
+using ControllerProject;
 
 namespace ViewProject
 {
     public partial class FormNotaEntrada : Form
     {
+        private NotaEntradaController controller;
+        private FornecedorController fornecedorController;
+        private ProdutoController produtoController;
+
+
+
+
+
+
+
+
         public FormNotaEntrada()
         {
             InitializeComponent();

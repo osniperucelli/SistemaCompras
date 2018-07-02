@@ -23,9 +23,11 @@ namespace ViewProject
         }
 
         //botao gravar
-        private void btnGravar_Click(object sender, EventArgs e) {
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
             //var fornecedor = this.controller.Insert(
-            var fornecedor = new Fornecedor() {
+            var fornecedor = new Fornecedor()
+            {
                 Id = (txtID.Text == string.Empty ?    //operador ternario  o ?:
                     Guid.NewGuid() : new Guid(txtID.Text)),
                 Nome = txtNome.Text,
@@ -41,7 +43,8 @@ namespace ViewProject
         }
 
         //Metodo clearControl
-        private void ClearControls() {
+        private void ClearControls()
+        {
             dgvFornecedores.ClearSelection();
             txtID.Text = string.Empty;
             txtNome.Text = string.Empty;
@@ -51,7 +54,8 @@ namespace ViewProject
         
 
         //botao novo
-        private void btnNovo_Click(object sender, EventArgs e){
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
             ClearControls();
             //txtID.Text = string.Empty;
             //txtNome.Text = string.Empty;
