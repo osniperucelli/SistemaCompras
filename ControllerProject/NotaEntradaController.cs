@@ -18,8 +18,17 @@ namespace ControllerProject
 
 
         public void Remove(NotaEntrada notaEntrada) {
+            notaEntrada.RemoverTodosProdutos();
             this.repository.RemoveNotaEntrada(notaEntrada);
         }
+
+
+        //inclusao de ultima hora pag 179
+        public void RemoveNotaEntrada(NotaEntrada notaEntrada)
+        {
+            this.NotasEntrada.Remove(notaEntrada);
+        }
+
 
 
         public IList<NotaEntrada> GetAllNotasEntrada() {
