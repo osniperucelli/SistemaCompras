@@ -8,14 +8,25 @@ namespace ModelProject
 {
     public class Fornecedor
     {
-        public Guid Id { get; set; }   //guid representa n inteiro de 16 bytes
+        public int Codigo { get; set; } //id do banco de dados
         public string Nome { get; set; }
         public string CNPJ { get; set; }
 
+        public Fornecedor()
+        {
+
+        }
+
+        public Fornecedor(int codigo, string nome, string cnpj)
+        {
+            Codigo = codigo;
+            Nome = nome;
+            CNPJ = cnpj;
+        }
 
         //subscrevendo metodos Equals e GetHashCode para que objeto possa ser buscado na selecao em fornecedor.
         protected bool Equals(Fornecedor other) {
-            return Id.Equals(other.Id);
+            return Codigo.Equals(other.Codigo);
         }
 
         public override bool Equals(object obj)
@@ -25,11 +36,6 @@ namespace ModelProject
             if (obj.GetType() != typeof(Fornecedor))
                 return false;
             return Equals((Fornecedor) obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return Id.GetHashCode();
         }
     }
 }

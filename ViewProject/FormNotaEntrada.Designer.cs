@@ -149,8 +149,8 @@
             // 
             // txtIDNota
             // 
-            this.txtIDNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIDNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIDNota.Enabled = false;
             this.txtIDNota.Location = new System.Drawing.Point(73, 3);
             this.txtIDNota.Name = "txtIDNota";
@@ -250,14 +250,16 @@
             // 
             // cbxFornecedor
             // 
-            this.cbxFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxFornecedor.DisplayMember = "Nome";
             this.cbxFornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFornecedor.FormattingEnabled = true;
             this.cbxFornecedor.Location = new System.Drawing.Point(73, 29);
             this.cbxFornecedor.Name = "cbxFornecedor";
             this.cbxFornecedor.Size = new System.Drawing.Size(228, 21);
             this.cbxFornecedor.TabIndex = 10;
+            this.cbxFornecedor.ValueMember = "Id";
             // 
             // dtpEmissao
             // 
@@ -327,7 +329,7 @@
             // 
             this.lblCUsto.AutoSize = true;
             this.lblCUsto.Location = new System.Drawing.Point(3, 53);
-            this.lblCUsto.Name = "lblCusto";
+            this.lblCUsto.Name = "lblCUsto";
             this.lblCUsto.Size = new System.Drawing.Size(37, 13);
             this.lblCUsto.TabIndex = 2;
             this.lblCUsto.Text = "Custo:";
@@ -348,8 +350,8 @@
             // 
             // txtIDProduto
             // 
-            this.txtIDProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIDProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIDProduto.Enabled = false;
             this.txtIDProduto.Location = new System.Drawing.Point(74, 3);
             this.txtIDProduto.Name = "txtIDProduto";
@@ -435,8 +437,8 @@
             // 
             // cbxProduto
             // 
-            this.cbxProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxProduto.Enabled = false;
             this.cbxProduto.FormattingEnabled = true;

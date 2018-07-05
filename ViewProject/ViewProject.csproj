@@ -71,6 +71,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormNotaEntrada.resx">
+      <DependentUpon>FormNotaEntrada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JanelaPrincipal.resx">
       <DependentUpon>JanelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>

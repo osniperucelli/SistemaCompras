@@ -34,26 +34,28 @@ namespace ViewProject
         {
             InitializeComponent();
             this.controller = controller;
+            dgvFornecedores.DataSource = this.controller.GetAll();
         }
 
         //botao gravar
         private void btnGravar_Click(object sender, EventArgs e)
         {
             //var fornecedor = this.controller.Insert(
-            var fornecedor = new Fornecedor()
+
+            Fornecedor fornecedor = new Fornecedor();
+            fornecedor.Nome = txtNome.Text;
+            fornecedor.CNPJ = txtCNPJ.Text;
+            if (!string.IsNullOrEmpty(txtID.Text))
             {
-                Id = (txtID.Text == string.Empty ?    //operador ternario  o ?:
-                    Guid.NewGuid() : new Guid(txtID.Text)),
-                Nome = txtNome.Text,
-                CNPJ = txtCNPJ.Text
-            };
-            fornecedor = (txtID.Text == string.Empty ?
-                this.controller.Insert(fornecedor) : 
-                this.controller.Update(fornecedor));                
+                fornecedor.Codigo = Convert.ToInt32(txtID.Text);
+            }
+
+            fornecedor = (txtID.Text == string.Empty ? this.controller.Insert(fornecedor) : this.controller.Update(fornecedor));                
                 //txtID.Text = fornecedor.Id.ToString();
+            ClearControls();
             dgvFornecedores.DataSource = null;   //funciona com reset de dados no controle.
             dgvFornecedores.DataSource = this.controller.GetAll();  //getAll é um ilist tornando controlador e repositorio mais independentes.
-            ClearControls();
+            dgvFornecedores.Refresh();
         }
 
         //Metodo clearControl
@@ -80,25 +82,31 @@ namespace ViewProject
         //metodo captura evento selecionado
         private void dgvFornecedores_SelectionChanged(object sender, EventArgs e)
         {
-            txtID.Text = dgvFornecedores.CurrentRow.Cells[0].Value.ToString();
-            txtNome.Text = dgvFornecedores.CurrentRow.Cells[1].Value.ToString();
-            txtCNPJ.Text = dgvFornecedores.CurrentRow.Cells[2].Value.ToString();
+            if (dgvFornecedores.SelectedRows.Count > 0)
+            {
+                txtID.Text = dgvFornecedores.CurrentRow.Cells[0].Value.ToString(); //na tela esse eh o codigo do banco
+                txtNome.Text = dgvFornecedores.CurrentRow.Cells[1].Value.ToString(); //na tela esse eh o nome
+                txtCNPJ.Text = dgvFornecedores.CurrentRow.Cells[2].Value.ToString(); //na tela esse eh o cnpj
+            }
         }
 
 
         //botao remover
         private void btnRemover_Click(object sender, EventArgs e) {
-            if (txtID.Text == string.Empty){
+            if (txtID.Text == string.Empty)
+            {
                 MessageBox.Show("Selecione o FORNECEDOR a ser removido no GRID.");
             }
             else
             {
                 this.controller.Remove(new Fornecedor()
                 {
-                    Id = new Guid(txtID.Text)
-                }                
-                );
+                    Codigo = Convert.ToInt32(txtID.Text)
+                });
+
                 dgvFornecedores.DataSource = null;
+                dgvFornecedores.Rows.Clear();
+                dgvFornecedores.Refresh();
                 dgvFornecedores.DataSource = this.controller.GetAll();
                 ClearControls();
             }                
