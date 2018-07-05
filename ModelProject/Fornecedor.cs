@@ -8,7 +8,7 @@ namespace ModelProject
 {
     public class Fornecedor
     {
-        public int Codigo { get; set; } //id do banco de dados
+        public int Id { get; set; } //id do banco de dados
         public string Nome { get; set; }
         public string CNPJ { get; set; }
 
@@ -19,14 +19,14 @@ namespace ModelProject
 
         public Fornecedor(int codigo, string nome, string cnpj)
         {
-            Codigo = codigo;
+            Id = codigo;
             Nome = nome;
             CNPJ = cnpj;
         }
 
         //subscrevendo metodos Equals e GetHashCode para que objeto possa ser buscado na selecao em fornecedor.
         protected bool Equals(Fornecedor other) {
-            return Codigo.Equals(other.Codigo);
+            return Id.Equals(other.Id);
         }
 
         public override bool Equals(object obj)
@@ -36,6 +36,11 @@ namespace ModelProject
             if (obj.GetType() != typeof(Fornecedor))
                 return false;
             return Equals((Fornecedor) obj);
+        }
+
+        public override string ToString()
+        {
+            return this.Nome;
         }
     }
 }

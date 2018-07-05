@@ -44,7 +44,9 @@ namespace ControllerProject
         }
 
         public NotaEntrada GetNotaEntradabyId(Guid Id) {
-            return this.repository.GetNotaEntradaById(Id);
+            //return this.repository.GetNotaEntradaById(Id);
+
+            return null;
         }
     }
 }

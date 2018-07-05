@@ -30,10 +30,10 @@ namespace ViewProject
         }
 
         //adicionado  do livro 
-        //private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    new FormProduto(produtoController).ShowDialog();
-        //}
+        private void produtoToolStripMenuItem_click(object sender, EventArgs e)
+        {
+            new FormProduto().ShowDialog();
+        }
 
         private void compraToolStripMenuItem_Click(object sender, EventArgs e)
         {

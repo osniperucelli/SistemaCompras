@@ -15,7 +15,7 @@ namespace ControllerProject
 
         public Produto Insert(Produto produto)
         {
-            return this.repository.InsetProduto(produto);
+            return this.repository.InsertProduto(produto);
         }
 
 

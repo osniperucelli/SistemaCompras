@@ -14,7 +14,7 @@ namespace ViewProject
 {
     public partial class FormNotaEntrada : Form
     {
-        private NotaEntradaController controller;
+        private NotaEntradaController notaEntradaController;
         private FornecedorController fornecedorController;
         private ProdutoController produtoController;
 
@@ -23,10 +23,11 @@ namespace ViewProject
         public FormNotaEntrada(NotaEntradaController controller, FornecedorController fornecedorController, ProdutoController produtoController)
         {
             InitializeComponent();
-            this.controller = controller;
+            this.notaEntradaController = controller;
             this.fornecedorController = fornecedorController;
             this.produtoController = produtoController;
             InicializaComboBoxs();   //controle q possui lista suspensa c itens q podem ser selecionados.
+            AtualizarDataGridViewNotas();
         }
 
 
@@ -64,21 +65,33 @@ namespace ViewProject
         {
             var notaEntrada = new NotaEntrada()
             {
-                Id = (txtIDNota.Text == string.Empty ? Guid.NewGuid() : new Guid(txtIDNota.Text)),
                 DataEmissao = dtpEmissao.Value,
                 DataEntrada = dtpEntrada.Value,
                 FornecedorNota = (Fornecedor)cbxFornecedor.SelectedItem,
                 Numero = txtNumero.Text
             };
-                notaEntrada = (txtIDNota.Text == string.Empty ? 
-                this.controller.Insert(notaEntrada) : 
-                this.controller.Update(notaEntrada));               
+
+            if (!string.IsNullOrEmpty(this.txtIDNota.Text))
+            {
+                notaEntrada.Id = Convert.ToInt32(txtIDNota.Text);
+                notaEntradaController.Update(notaEntrada);
+            }
+            else
+            {
+                notaEntradaController.Insert(notaEntrada);
+            }
+
             dgvNotasEntrada.DataSource = null;
-            dgvNotasEntrada.DataSource = this.controller.GetAll();
+            dgvNotasEntrada.DataSource = this.notaEntradaController.GetAll();
             ClearControlsNota();
         }
 
-
+        private void AtualizarDataGridViewNotas()
+        {
+            dgvNotasEntrada.DataSource = null;   //funciona com reset de dados no controle.
+            dgvNotasEntrada.DataSource = this.notaEntradaController.GetAll();  //getAll é um ilist tornando controlador e repositorio mais independentes.
+            dgvNotasEntrada.Refresh();
+        }
 
         //botao cancelar nota
         private void btnCancelarNota_Click(object sender, System.EventArgs e)
@@ -92,20 +105,19 @@ namespace ViewProject
         {
             if (txtIDNota.Text == string.Empty)
             {
-                MessageBox.Show(
-                   "Selecione a NOTA a ser removida no GRID");
+                MessageBox.Show("Selecione a NOTA a ser removida no GRID");
             }
             else
             {
-                this.controller.Remove(
+                this.notaEntradaController.Remove
+                (
                     new NotaEntrada()
                     {
-                        Id = new Guid(txtIDNota.Text)
+                        Id = Convert.ToInt32(txtIDNota.Text)
                     }
                 );
                 dgvNotasEntrada.DataSource = null;
-                dgvNotasEntrada.DataSource =
-                    this.controller.GetAll();
+                dgvNotasEntrada.DataSource = this.notaEntradaController.GetAll();
                 ClearControlsNota();
             }
         }
@@ -132,7 +144,7 @@ namespace ViewProject
         {
             try
             {
-                this.notaAtual = this.controller.
+                this.notaAtual = this.notaEntradaController.
                     GetNotaEntradabyId((Guid)dgvNotasEntrada.
                     CurrentRow.Cells[0].Value);
                 txtIDNota.Text = notaAtual.Id.
@@ -213,7 +225,7 @@ namespace ViewProject
                     txtQuantidade.Text)
             };
             this.notaAtual.RegistrarProduto(produtoNota);
-            this.notaAtual = this.controller.Update(
+            this.notaAtual = this.notaEntradaController.Update(
                 this.notaAtual);
             ChangeStatusOfControls(false);
             UpdateProdutosGrid();
@@ -246,7 +258,7 @@ namespace ViewProject
                     Id = new Guid(txtIDProduto.Text)
                 }
             );
-            this.controller.Update(this.notaAtual);
+            this.notaEntradaController.Update(this.notaAtual);
             UpdateProdutosGrid();
             ClearControlsProduto();
             ChangeStatusOfControls(false);
@@ -256,8 +268,7 @@ namespace ViewProject
         //metodo Clear Controls Produt
         private void ClearControlsProduto()
         {
-            //TODO: [Implementar]
-            MessageBox.Show("Implementar");
+            ChangeStatusOfControls(true);
         }
 
     }

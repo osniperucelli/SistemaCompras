@@ -34,7 +34,8 @@ namespace ViewProject
         {
             InitializeComponent();
             this.controller = controller;
-            dgvFornecedores.DataSource = this.controller.GetAll();
+            AtualizarDataGridView();
+            //InserirElementosDataGridView();
         }
 
         //botao gravar
@@ -47,15 +48,41 @@ namespace ViewProject
             fornecedor.CNPJ = txtCNPJ.Text;
             if (!string.IsNullOrEmpty(txtID.Text))
             {
-                fornecedor.Codigo = Convert.ToInt32(txtID.Text);
+                fornecedor.Id = Convert.ToInt32(txtID.Text);
             }
 
             fornecedor = (txtID.Text == string.Empty ? this.controller.Insert(fornecedor) : this.controller.Update(fornecedor));                
                 //txtID.Text = fornecedor.Id.ToString();
             ClearControls();
+            AtualizarDataGridView();
+
+            //InserirElementosDataGridView();
+        }
+
+        private void AtualizarDataGridView()
+        {
             dgvFornecedores.DataSource = null;   //funciona com reset de dados no controle.
             dgvFornecedores.DataSource = this.controller.GetAll();  //getAll é um ilist tornando controlador e repositorio mais independentes.
             dgvFornecedores.Refresh();
+        }
+
+        //Exemplo de datagridview inserindo elementos manualmente
+        private void InserirElementosDataGridView()
+        {
+            dgvFornecedores.Columns.Clear();
+            dgvFornecedores.Rows.Clear();
+            dgvFornecedores.Refresh();
+
+            IList<Fornecedor> fornecedores = this.controller.GetAll();
+            dgvFornecedores.ColumnCount = 3;
+            dgvFornecedores.Columns[0].Name = "Id";
+            dgvFornecedores.Columns[1].Name = "Nome";
+            dgvFornecedores.Columns[2].Name = "CNPJ";
+            foreach (Fornecedor f in fornecedores)
+            {
+                string[] dadosFornecedor = new string[] { f.Id.ToString(), f.Nome, f.CNPJ };
+                dgvFornecedores.Rows.Add(dadosFornecedor);
+            }
         }
 
         //Metodo clearControl
@@ -93,7 +120,7 @@ namespace ViewProject
 
         //botao remover
         private void btnRemover_Click(object sender, EventArgs e) {
-            if (txtID.Text == string.Empty)
+            if (string.IsNullOrEmpty(txtID.Text))
             {
                 MessageBox.Show("Selecione o FORNECEDOR a ser removido no GRID.");
             }
@@ -101,14 +128,12 @@ namespace ViewProject
             {
                 this.controller.Remove(new Fornecedor()
                 {
-                    Codigo = Convert.ToInt32(txtID.Text)
+                    Id = Convert.ToInt32(txtID.Text)
                 });
 
-                dgvFornecedores.DataSource = null;
-                dgvFornecedores.Rows.Clear();
-                dgvFornecedores.Refresh();
-                dgvFornecedores.DataSource = this.controller.GetAll();
                 ClearControls();
+                AtualizarDataGridView();
+                //InserirElementosDataGridView();
             }                
         }
 
@@ -116,7 +141,5 @@ namespace ViewProject
         {
             ClearControls();
         }
-
-
     }
 }
