@@ -33,6 +33,7 @@ create table Notas
 
 select * from Fornecedores
 select * from Produtos
+select * from Notas
 
 truncate table Fornecedores
 

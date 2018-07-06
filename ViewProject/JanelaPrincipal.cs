@@ -29,7 +29,7 @@ namespace ViewProject
             new FormFornecedor(fornecedorController).ShowDialog();
         }
 
-        //adicionado  do livro 
+        //adicionado  do exemplo do livro 
         private void produtoToolStripMenuItem_click(object sender, EventArgs e)
         {
             new FormProduto().ShowDialog();

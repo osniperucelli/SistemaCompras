@@ -53,14 +53,14 @@ namespace ViewProject
         }
 
 
-        //botao Novo Nota
+        //captura evento botao Novo Nota
         private void btnNovoNota_Click(object sender, System.EventArgs e)
         {
             ClearControlsNota();
         }
 
 
-        //botao gravar ou gravar nota dif da pag 173
+        //botao gravar ou gravar nota 
         private void btnGravarNota_Click(object sender, System.EventArgs e)
         {
             var notaEntrada = new NotaEntrada()
@@ -180,7 +180,7 @@ namespace ViewProject
 
 
 
-        //botao Novo Produto 182
+        //botao Novo Produto 
         private void btnNovoProduto_Click(object sender, EventArgs e)
         {
             ClearControlsProduto();
@@ -232,7 +232,7 @@ namespace ViewProject
             ClearControlsProduto();
         }
 
-        //incluido do livro 183
+        //incluido sugestao pega no livro
         //private void RegistrarProduto(ProdutoNotaEntrada produto)
         //{
         //    if (this.Produtos.Contains(produto))

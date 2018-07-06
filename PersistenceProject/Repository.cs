@@ -11,7 +11,7 @@ namespace PersistenceProject
 {
     public class Repository
     {
-        //para Fornecedor
+        //para FORNECEDOR
         private IList<Fornecedor> fornecedores = new List<Fornecedor>();
         private IList<Produto> produtos = new List<Produto>();
         private IList<NotaEntrada> notasEntrada = new List<NotaEntrada>();
@@ -113,7 +113,7 @@ namespace PersistenceProject
             return fornecedor;
         }
 
-        //para Nota Entrada
+        //para NOTA ENTRADA
 
         public NotaEntrada InsertNotaEntrada(NotaEntrada notaEntrada)
         {
@@ -213,13 +213,15 @@ namespace PersistenceProject
 
 
 
-        //para Produto
+        //para PRODUTO 
         public Produto InsertProduto(Produto produto)
         {
             string query = "INSERT INTO Produtos (Nome) VALUES (@Nome); SELECT SCOPE_IDENTITY();";
             SqlParameter[] parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("@Nome", SqlDbType.VarChar);
             parameters[0].Value = produto.Nome;
+
+
 
             int idGerado = conn.ExecuteInsert(query, parameters);
             produto.Id = idGerado;
