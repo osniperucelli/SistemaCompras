@@ -45,7 +45,7 @@ namespace ViewProject
         {
             dgvProdutos.DataSource = null;   //funciona com reset de dados no controle.
             dgvProdutos.DataSource = this.controller.GetAll();  //getAll é um ilist tornando controlador e repositorio mais independentes.
-            dgvProdutos.Refresh();
+            dgvProdutos.Refresh();  //datasource obtem ou define fonte de dados p o qual o datagridview exibe dados.
         }
 
         private void ClearControls()
@@ -84,6 +84,9 @@ namespace ViewProject
             ClearControls();
         }
 
+
+        //selectionChanged permite no caso, uma vez escolhido a linha no dataGridView, atualizar linha.
+        //porque o dataGridView esta configurado para selecionar a linha inteira por meio do click do mouse.
         private void dgvProdutos_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvProdutos.SelectedRows.Count > 0)

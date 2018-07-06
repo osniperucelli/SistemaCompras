@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelProject;
 
+//para persistencia dos objetos em banco de dados
 namespace PersistenceProject
 {
     public class Repository
