@@ -3,7 +3,9 @@
     partial class FormJanelaPrincipal
     {
         /// <summary>
-        /// Required designer variable.
+        ///Codigo para conclusao do disciplina C# tendo por base as aulas recebidas, e o livro C# e visual Studio.
+        ///Usado sql na implementacao de banco de dados.
+        ///Aluno: Osni A Perucelli
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
